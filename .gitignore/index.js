@@ -21,7 +21,7 @@ bot.on('message', message => {
         .addField(":cop: Modération \n \n-Ban | Utilisation -ban @user raison \n- Kick | Utilisation #kick @user \n- Clear | Utilisation #clear <nombre> \n", ".")
         .addField(":bust_in_silhouette: Joueur \n \n- Aide | Utilisation #help \n- Informations Discord | Utilisation #infodiscord \n- Server List | Utilisation #serverlist \n- Ping | Utilisation #ping \n- Createur  | Utilisation #createur", ".")
         .addField("🎮 Les jeux \n \n- Garry's Mod | Utilisation #gmod \n- CSGO | Utilisation #csgo \n- Arma 3 | Utilisation #arma3 \n- Rust | Utilisation #rust", ".")
-        message.channel.send(help_embed)
+        member.user.send(help_embed)
 }
 
     if (message.content === "fdp"){
