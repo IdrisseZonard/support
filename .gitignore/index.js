@@ -18,7 +18,7 @@ bot.on('message', message => {
         .setFooter(message.author.username, message.author.avatarURL)
         .setTimestamp()
         .setColor("E26302") //http://www.code-couleur.com
-        .addField(":hammer_pick: Modérateur \n- Ban | Utilisation @ban @user raison \n- Kick | Utilisation @kick @user \n- Clear | Utilisation @clear nombre", ".")
+        .addField(":hammer_pick: Modérateur \n \n- Ban | Utilisation @ban @user raison \n- Kick | Utilisation @kick @user \n- Clear | Utilisation @clear nombre", ".")
         .addField(".", ".")
         message.channel.send(help_embed)
 }
