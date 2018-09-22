@@ -30,4 +30,11 @@ bot.on('message', message => {
     }
 });
 
-
+if (msg.startsWith('/avatar')) {
+    const user_avatar = message.mentions.users.first();
+    const embed_avatar = new Discord.RichEmbed()
+        .setTitle(`Avatar de ${user_avatar.username}`)
+        .setColor(0xFF0000)
+        .setImage(user_avatar.avatarURL);        
+    message.channel.send(embed_avatar);
+};
