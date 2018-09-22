@@ -37,4 +37,4 @@ if (msg.startsWith('/avatar')) {
         .setColor(0xFF0000)
         .setImage(user_avatar.avatarURL);        
     message.channel.send(embed_avatar);
-};
+}
