@@ -24,4 +24,11 @@ bot.on('message', message => {
         message.channel.send(help_embed)
 }
 
+    if (message.content === "fdp"){
+        message.delete()
+        message.reply("Insulte interdit ! Le Staff te surveilles");
+        console.log("Insulte FDP");
+    }
+});
+
 
