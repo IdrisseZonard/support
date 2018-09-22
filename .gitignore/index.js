@@ -18,8 +18,8 @@ bot.on('message', message => {
         .setFooter(message.author.username, message.author.avatarURL)
         .setTimestamp()
         .setColor("E26302") //http://www.code-couleur.com
-        .addField("", ".")
-        .addField("", ".")
+        .addField(".", ".")
+        .addField(".", ".")
         message.channel.send(help_embed)
 }
 
