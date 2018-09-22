@@ -136,3 +136,14 @@ bot.on('message', message => {
     })
   }
 });
+
+bot.on('message', message => {
+    if(message.content[0] === prefix) {
+        if(message.content === prefix + 'test') {
+
+            let role = message.guild.roles.find("name", "Membre")
+            let user = message.mentions.users.first() || message.author; 
+
+                user.addRole(role)
+                user.send("Le rôle membre a était assigné")
+}}});
