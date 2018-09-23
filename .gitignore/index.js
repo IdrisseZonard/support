@@ -199,7 +199,7 @@ bot.on('message', message => {
      
             if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")) return message.channel.send("Je n'ai pas la permission !");
             message.member.removeRole(role).then(member => {
-                message.guild.channels.find("name", "logs-sanctions").send(`**${member.user.username}** a été avertit par **${member}** pour **Infraction au règles**`);
+                message.guild.channels.find("name", "logs-sanctions").send(`**${member.user}** a été avertit par **${member}** pour **Infraction au règles**`);
             })
     }});
 
