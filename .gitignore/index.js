@@ -217,7 +217,7 @@ bot.on('message', message => {
            .setTimestamp()
            .setFooter(message.author.username, message.author.avatarURL)
            .addField("🛠️ Annonce 🛠️", args.join(" "))
-      message.channel.sendEmbed(embed);
+      message.guild.channels.find("name", "sa-test").sendEmbed(embed);
    
        }
    
