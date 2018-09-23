@@ -206,3 +206,19 @@ bot.on('message', message => {
 bot.on("guildMemberAdd", member => {
     member.guild.channels.find("name", "sa-test").send(`🛠️ Bienvenue ${member} :desktop: Tu viens de rejoindre le discord de Idrisse :clipboard: "$informations" pour connaître le but.`);
 });
+
+bot.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+   
+    if(message.content.startsWith(prefix + "azertylaon"))  {
+           message.delete()
+           const embed = new Discord.RichEmbed()
+           .setColor(0xff0000)
+           .setTimestamp()
+           .setFooter(message.author.username, message.author.avatarURL)
+           .addField("🛠️ Annonce 🛠️", args.join(" "))
+      message.channel.sendEmbed(embed);
+   
+       }
+   
+  });
