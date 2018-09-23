@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 var prefix = ("%")
 
 bot.on('ready', function() {
-    bot.user.setActivity('@help | Crée par Idrisse', { type: 'PLAYING' });
+    bot.user.setActivity('%help | Crée par Idrisse', { type: 'PLAYING' });
     console.log("Bot lancé | Idrisse");
 });
 
@@ -18,7 +18,7 @@ bot.on('message', message => {
         .setFooter(message.author.username, message.author.avatarURL)
         .setTimestamp()
         .setColor("E26302") //http://www.code-couleur.com
-        .addField(":hammer_pick: Modérateur \n \n- Ban | Utilisation @ban @user raison \n- Kick | Utilisation @kick @user \n- Clear | Utilisation @clear nombre", ".")
+        .addField(":hammer_pick: Modérateur \n \n- Ban | Utilisation @ban @user raison \n- Kick | Utilisation @kick @user \n- Clear | Utilisation @clear nombre \n- Mute | Utilisation %mute @user \n- Unmute | Utilisation %unmute @user \n- Warn | Utilisation %warn @user", ".")
         .addField(".", ".")
         message.channel.send(help_embed)
 }
@@ -147,3 +147,69 @@ bot.on('message', message => {
                 user.addRole(role)
                 user.send("Le rôle membre a était assigné")
 }}});
+
+bot.on('message', message => {
+        if(message.content.startsWith(prefix + "mute")) {
+    
+            let role = message.guild.roles.find("name", "🔇 Mute | Infraction 🔇")
+    
+            if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+     
+            if(message.mentions.users.size === 0) {
+                return message.channel.send('Vous devez mentionner un utilisateur !');
+            }
+     
+            var mute = message.guild.member(message.mentions.users.first());
+            if(!mute) {
+                return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
+            }
+     
+            if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")) return message.channel.send("Je n'ai pas la permission !");
+            message.member.addRole(role).then(member => {
+                message.guild.channels.find("name", "logs-sanctions").send(`**${member.user.username}** a été mute par **${message.author.username}**`);
+            })
+    }});
+
+    bot.on('message', message => {
+        if(message.content.startsWith(prefix + "unmute")) {
+    
+            let role = message.guild.roles.find("name", "🔇 Mute | Infraction 🔇")
+    
+            if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+     
+            if(message.mentions.users.size === 0) {
+                return message.channel.send('Vous devez mentionner un utilisateur !');
+            }
+     
+            var mute = message.guild.member(message.mentions.users.first());
+            if(!mute) {
+                return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
+            }
+     
+            if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")) return message.channel.send("Je n'ai pas la permission !");
+            message.member.removeRole(role).then(member => {
+                message.guild.channels.find("name", "logs-sanctions").send(`**${member.user.username}** a été unmute par **${message.author.username}**`);
+            })
+    }});
+
+    bot.on('message', message => {
+        if(message.content.startsWith(prefix + "warn")) {
+    
+            let role = message.guild.roles.find("name", "🔇 Mute | Infraction 🔇")
+    
+            if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+     
+            if(message.mentions.users.size === 0) {
+                return message.channel.send('Vous devez mentionner un utilisateur !');
+            }
+     
+            var mute = message.guild.member(message.mentions.users.first());
+            if(!mute) {
+                return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
+            }
+     
+            if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")) return message.channel.send("Je n'ai pas la permission !");
+            message.member.removeRole(role).then(member => {
+                message.guild.channels.find("name", "logs-sanctions").send(`**${member.user.username}** a été avertit par **${message.author.username}** pour **BIENTOT DISPO**`);
+            })
+    }});
