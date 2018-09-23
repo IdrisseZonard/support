@@ -6,7 +6,6 @@ var prefix = ("%")
 bot.on('ready', function() {
     bot.user.setActivity('%help | Crée par Idrisse', { type: 'PLAYING' });
     console.log("Bot lancé | Idrisse");
-    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bot Lancé`);
 });
 
 bot.login(process.env.TOKEN);
