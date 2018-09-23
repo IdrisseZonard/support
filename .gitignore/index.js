@@ -6,6 +6,7 @@ var prefix = ("%")
 bot.on('ready', function() {
     bot.user.setActivity('%help | Crée par Idrisse', { type: 'PLAYING' });
     console.log("Bot lancé | Idrisse");
+    message.guild.channels.find("name", "logs-sanctions").send("**Bot lancé*");
 });
 
 bot.login(process.env.TOKEN);
