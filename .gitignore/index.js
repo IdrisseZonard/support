@@ -138,17 +138,6 @@ bot.on('message', message => {
 });
 
 bot.on('message', message => {
-    if(message.content[0] === prefix) {
-        if(message.content === prefix + 'test') {
-
-            let role = message.guild.roles.find("name", "Membre")
-            let user = message.mentions.users.first() || message.author; 
-
-                user.addRole(role)
-                user.send("Le rôle membre a était assigné")
-}}});
-
-bot.on('message', message => {
         if(message.content.startsWith(prefix + "mute")) {
     
             let role = message.guild.roles.find("name", "🔇 Mute | Infraction 🔇")
@@ -213,3 +202,7 @@ bot.on('message', message => {
                 message.guild.channels.find("name", "logs-sanctions").send(`**${member.user.username}** a été avertit par **${message.author.username}** pour **Infraction au règles**`);
             })
     }});
+
+bot.on("guildMemberAdd", member => {
+    member.guild.channels.find("name", "sa-test").send(`🛠️ Bienvenue ${member} :desktop: Tu viens de rejoindre le discord de Idrisse :clipboard: "$informations" pour connaître le but.`);
+});
